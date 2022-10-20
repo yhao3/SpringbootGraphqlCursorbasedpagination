@@ -1,18 +1,18 @@
 spring: 
     datasource: 
-        driver-class-name: org.h2.Driver
-        url: jdbc:h2:mem:testdb
-        username: sa
-        password:
-    sql: 
-        init: 
-            mode: always
-            schema-locations: classpath:/db/schema.sql
-            data-locations: classpath:/db/data.sql
-    h2:
-        console:
-            enabled: true
-            path: /h2-console
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://127.0.0.1:54322/test_db
+        username: admin
+        password: admin
+    # sql: 
+    #     init: 
+    #         mode: always
+    #         schema-locations: classpath:/db/schema.sql
+    #         data-locations: classpath:/db/data.sql
+    # h2:
+    #     console:
+    #         enabled: true
+    #         path: /h2-console
     jpa: 
         show-sql: true
         hibernate: 

@@ -1,0 +1,42 @@
+type Query {
+    postsNext(
+        first: Int,      # "前" ?first 筆資料
+        after: String,   # after cursor 。Cursor 為編碼後的 base 64 字串，後端會 decode
+        orderBy: String, 
+        direction: String
+    ): PostsConnection
+
+    postsPrev(
+        last: Int,       # "後" ?first 筆資料
+        before: String,  # before cursor 。Cursor 為編碼後的 base 64 字串，後端會 decode
+        orderBy: String, 
+        direction: String
+    ): PostsConnection
+}
+
+scalar DateTime
+
+type PostDTO {
+    id: ID!
+    title: String!
+    createdAt: DateTime!
+    firstName: String!
+    lastName: String!
+    email: String!
+}
+
+type PostsConnection {
+    edges: [PostEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Int
+}
+
+type PostEdge {
+    node: PostDTO!
+    cursor: String!
+}
+
+type PageInfo {
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+}
